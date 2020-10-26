@@ -24,4 +24,4 @@ class Migration(migrations.Migration):
         ),
     ]
 
-    # https://github.com/Gizmotronn/django-start/commit/3bf8efa814fa51646393c1ca3ab3e2d4bdaf09a9
+    # https://github.com/Gizmotronn/django-start/commit/3bf8efa814fa51646393c1ca3ab3e2d4bdaf09a9 - fixed
