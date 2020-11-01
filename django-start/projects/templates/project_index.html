@@ -1,0 +1,22 @@
+{% extends "base.html" %} # extent base.html, like in the Hello, World! app /#/ https://github.com/realpython/materials/blob/get-started-with-django-part-1/rp-portfolio/personal_portfolio/templates/base.html
+{% load static %} # tag to include static files like images. The filepath when we created the models in projects will be used for these images
+{% block page_content %}
+<h1>Projects</h1>
+<div class="row">
+{% for project in projects %} # begin for loop - looping over all projects passed in by the context dictionary
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static project.image %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5> # fill in content from models attributes
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-primary"> # create a button, linking to the project's page (project_detail pk)
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
