@@ -1,4 +1,4 @@
 {
     "jira-plugin.workingProject": "",
-    "python.pythonPath": ".venv/bin/python"
+    "python.pythonPath": "/opt/python/latest/bin/python"
 }
