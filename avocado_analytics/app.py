@@ -14,7 +14,7 @@ data.sort_values("Date", inplace=True) # sort by date
 app = dash.Dash(__name__)
 
 # Create the layout property of the Dash app
-app.layout """define parent component - an html div element"""= html.Div( # Using dash_html_components library 
+app.layout = html.Div( # Using dash_html_components library 
     children=[ # add a child element to the html div
         html.H1(children="Avocado Analytics",), # first child element is a heading - h1
         html.P( # secondchild element is a paragraph - p
@@ -51,4 +51,4 @@ app.layout """define parent component - an html div element"""= html.Div( # Usin
 
 # Run the app
 if __name__ == "__main__": # run app locally using flask's built-in server
-    app.run_server(debug=True"""Enables hot reload""")
+    app.run_server(debug=True)
