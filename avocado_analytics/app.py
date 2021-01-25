@@ -1,4 +1,4 @@
-import dash
+import dash # https://github.com/acord-robotics/datascience/commit/66ff2070b40e692551a63b657453724e76e697db
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
@@ -14,6 +14,7 @@ app.layout = html.Div(
     children=[
         html.H1(
             children="Avocado Analytics",
+            style={"fontSize": "48px", "color": "red"},
         ),
         html.P(
             children="Analyze the behavior of avocado prices"
