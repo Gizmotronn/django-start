@@ -1,4 +1,4 @@
 {
     "jira-plugin.workingProject": "",
-    "python.pythonPath": "/opt/python/latest/bin/python"
+    "python.pythonPath": "/usr/bin/python3"
 }

@@ -1,28 +1,35 @@
-# Import required libraries
-import dash # initialization of application
-import dash_core_components as dcc # interactive components like graphs /#/ assign shortcuts to library/module
-import dash_html_components as html # access html tags
-import pandas as pd # read and organise data
+import dash # https://github.com/acord-robotics/datascience/commit/66ff2070b40e692551a63b657453724e76e697db
+import dash_core_components as dcc
+import dash_html_components as html
+import pandas as pd
 
-# Read the data and preprocess it for use in the dashboard
-data = pd.read_csv("avocado.csv") # Use pandas to read the contents of the csv and assign it to the data variable    /#/ //#/ 
-data = data.query("type == 'conventional' and region == 'Albany'") # create a query and use data to only show values from that query
+data = pd.read_csv("avocado.csv")
+data = data.query("type == 'conventional' and region == 'Albany'")
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
-data.sort_values("Date", inplace=True) # sort by date
+data.sort_values("Date", inplace=True)
 
-# Create instance of the Dash Class
-app = dash.Dash(__name__)
+external_stylesheets = [
+    {
+        "href": "https://fonts.googleapis.com/css2?"
+                "family=Lato:wght@400;700&display=swap",
+        "rel": "stylesheet",
+    },
+]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app.title = "Avocado Analytics: Understand your Avocados"
 
-# Create the layout property of the Dash app
-app.layout = html.Div( # Using dash_html_components library 
-    children=[ # add a child element to the html div
-        html.H1(children="Avocado Analytics",), # first child element is a heading - h1
-        html.P( # secondchild element is a paragraph - p
+app.layout = html.Div(
+    children=[
+        html.H1(
+            children="Avocado Analytics",
+            style={"fontSize": "48px", "color": "red"},
+        ),
+        html.P(
             children="Analyze the behavior of avocado prices"
             " and the number of avocados sold in the US"
             " between 2015 and 2018",
         ),
-        dcc.Graph( # dash core components/graph. /#/ This one is plotting the average price during period of study
+        dcc.Graph(
             figure={
                 "data": [
                     {
@@ -34,7 +41,7 @@ app.layout = html.Div( # Using dash_html_components library
                 "layout": {"title": "Average Price of Avocados"},
             },
         ),
-        dcc.Graph( # graph plotting number of aUnits sold
+        dcc.Graph(
             figure={
                 "data": [
                     {
@@ -49,6 +56,5 @@ app.layout = html.Div( # Using dash_html_components library
     ]
 )
 
-# Run the app
-if __name__ == "__main__": # run app locally using flask's built-in server
+if __name__ == "__main__":
     app.run_server(debug=True)
